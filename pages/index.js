@@ -64,20 +64,6 @@ const Photos = () => (
   </section>
 );
 
-// Footer component
-const Footer = () => (
-  <footer className="p-5 bg-gray-800 text-white text-center">
-    <p>&copy; 2025 Nextfolio</p>
-    <div className="flex justify-center space-x-4 mt-2">
-      <a href="#">X</a>
-      <a href="#">GitHub</a>
-      <a href="#">Instagram</a>
-      <a href="#">LinkedIn</a>
-      <a href="#">Email</a>
-      <a href="#">RSS</a>
-    </div>
-  </footer>
-);
 
 export default function Home() {
   return (
@@ -94,10 +80,4 @@ export default function Home() {
   );
 }
 
-// Styling can be done using Tailwind CSS or any preferred framework.
 
-
-
-export default Home;
-
-// Styling can be done using Tailwind CSS or any preferred framework.
