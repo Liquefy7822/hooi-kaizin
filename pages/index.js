@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Header from '@components/Header'
 import Footer from '@components/Footer'
+import { useState } from 'react';
 
 // Navbar component
 const Navbar = () => (
@@ -23,29 +24,58 @@ const Hero = () => (
   </section>
 );
 
-// Projects section component
-const Projects = () => (
-  <section id="projects" className="p-10 bg-gray-900 text-white">
-    <h3 className="text-3xl font-bold mb-6">Projects</h3>
-    <div className="space-y-6">
-      <div>
-        <h4 className="text-2xl">Project One</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laboriosam veritatis dolorem rem praesentium dicta labore, at laudantium quisquam.</p>
-        <span className="text-gray-500">2023</span>
+// Projects section component with collapsible cards
+const Projects = () => {
+  const projects = [
+    {
+      title: 'Project One',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laboriosam veritatis dolorem rem praesentium dicta labore, at laudantium quisquam.',
+      year: '2023',
+    },
+    {
+      title: 'Project Two',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laboriosam veritatis dolorem rem praesentium dicta labore, at laudantium quisquam.',
+      year: '2022',
+    },
+    {
+      title: 'Project Three',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laboriosam veritatis dolorem rem praesentium dicta labore, at laudantium quisquam.',
+      year: '2021',
+    },
+  ];
+
+  const [openProject, setOpenProject] = useState(null);
+
+  const toggleProject = (index) => {
+    setOpenProject(openProject === index ? null : index);
+  };
+
+  return (
+    <section id="projects" className="p-10 bg-gray-900 text-white">
+      <h3 className="text-3xl font-bold mb-6">Projects</h3>
+      <div className="space-y-6">
+        {projects.map((project, index) => (
+          <div key={index} className="border border-gray-700 rounded-md">
+            <button
+              onClick={() => toggleProject(index)}
+              className="w-full text-left p-4 bg-gray-800 text-white font-bold"
+            >
+              {project.title} <span className="text-gray-400">({project.year})</span>
+            </button>
+            {openProject === index && (
+              <div className="p-4 bg-gray-700">
+                <p>{project.description}</p>
+              </div>
+            )}
+          </div>
+        ))}
       </div>
-      <div>
-        <h4 className="text-2xl">Project Two</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laboriosam veritatis dolorem rem praesentium dicta labore, at laudantium quisquam.</p>
-        <span className="text-gray-500">2022</span>
-      </div>
-      <div>
-        <h4 className="text-2xl">Project Three</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laboriosam veritatis dolorem rem praesentium dicta labore, at laudantium quisquam.</p>
-        <span className="text-gray-500">2021</span>
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 // Photos section component
 const Photos = () => (
@@ -79,5 +109,4 @@ export default function Home() {
     </>
   );
 }
-
 
