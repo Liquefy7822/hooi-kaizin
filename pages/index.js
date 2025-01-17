@@ -1,11 +1,11 @@
-import Head from 'next/head'
-import Header from '@components/Header'
-import Footer from '@components/Footer'
+import Head from 'next/head';
+import Header from '@components/Header';
+import Footer from '@components/Footer';
 import { useState } from 'react';
 
 // Navbar component
 const Navbar = () => (
-  <nav className="flex justify-between items-center p-5 bg-black text-white">
+  <nav className="flex justify-center items-center p-5 bg-black text-white">
     <h1 className="text-xl font-bold">Nextfolio</h1>
     <div className="flex space-x-4">
       <a href="#projects">Projects</a>
@@ -55,18 +55,18 @@ const Projects = () => {
 
   return (
     <section id="projects" className="p-10 bg-gray-900 text-white">
-      <h3 className="text-3xl font-bold mb-6">Projects</h3>
+      <h3 className="text-3xl font-bold mb-6 text-center">Projects</h3>
       <div className="space-y-6">
         {projects.map((project, index) => (
           <div key={index} className="border border-gray-700 rounded-md">
             <button
               onClick={() => toggleProject(index)}
-              className="w-full text-left p-4 bg-gray-800 text-white font-bold"
+              className="w-full text-center p-4 bg-gray-800 text-white font-bold"
             >
               {project.title} <span className="text-gray-400">({project.year})</span>
             </button>
             {openProject === index && (
-              <div className="p-4 bg-gray-700">
+              <div className="p-4 bg-gray-700 text-center">
                 <p>{project.description}</p>
               </div>
             )}
@@ -80,7 +80,7 @@ const Projects = () => {
 // Photos section component
 const Photos = () => (
   <section id="photos" className="p-10 bg-black text-white">
-    <h3 className="text-3xl font-bold mb-6">Photos</h3>
+    <h3 className="text-3xl font-bold mb-6 text-center">Photos</h3>
     <div className="grid grid-cols-3 gap-4">
       {[...Array(9)].map((_, index) => (
         <div
@@ -93,7 +93,6 @@ const Photos = () => (
     </div>
   </section>
 );
-
 
 export default function Home() {
   return (
