@@ -65,14 +65,14 @@ const Projects = () => {
               onClick={() => toggleProject(index)}
               className="w-full text-left p-4 bg-gray-700 text-white font-bold flex justify-between items-center hover:bg-gray-600 transition duration-300 ease-in-out"
             >
-              <div className="flex items-center space-x-4">
-                <img src={project.image} alt={project.title} className="w-12 h-12 rounded-md" />
+              <div className="flex justify-between w-full">
                 <span>{project.title}</span>
+                <span className="text-gray-400">({project.year})</span>
               </div>
-              <span className="text-gray-400">({project.year})</span>
             </button>
             {openProject === index && (
               <div className="p-4 bg-gray-600">
+                <img src={project.image} alt={project.title} className="w-full mb-4 rounded-md" />
                 <p>{project.description}</p>
               </div>
             )}
