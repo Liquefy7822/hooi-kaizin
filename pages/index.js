@@ -5,22 +5,22 @@ import { useState } from 'react';
 
 // Navbar component
 const Navbar = () => (
-  <nav className="flex justify-center items-center p-5 bg-black text-white">
-    <h1 className="text-xl font-bold">Nextfolio</h1>
-    <div className="flex space-x-4">
-      <a href="#projects">Projects</a>
-      <a href="#photos">Photos</a>
+  <nav className="flex justify-between items-center p-5 bg-gray-900 text-white shadow-md">
+    <h1 className="text-2xl font-bold">Nextfolio</h1>
+    <div className="flex space-x-6">
+      <a href="#projects" className="hover:text-gray-400">Projects</a>
+      <a href="#photos" className="hover:text-gray-400">Photos</a>
     </div>
   </nav>
 );
 
 // Hero section component
 const Hero = () => (
-  <section className="flex flex-col items-center justify-center text-center min-h-screen bg-black text-white">
-    <h2 className="text-4xl font-bold">Hello, I'm Kai Zin!</h2>
-    <p className="mt-4">(Insert some of your very Sigma qualities)</p>
-    <p className="mt-2">(Insert some of your skibidi interest)</p>
-    <p className="mt-2">(Insert some of your dreams and goals)</p>
+  <section className="flex flex-col items-center justify-center text-center min-h-screen bg-gradient-to-b from-black via-gray-900 to-gray-800 text-white">
+    <h2 className="text-5xl font-bold mb-6">Hello, I'm Kai Zin!</h2>
+    <p className="text-lg mb-2">(Insert some of your very Sigma qualities)</p>
+    <p className="text-lg mb-2">(Insert some of your skibidi interest)</p>
+    <p className="text-lg">(Insert some of your dreams and goals)</p>
   </section>
 );
 
@@ -54,19 +54,19 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="p-10 bg-gray-900 text-white">
-      <h3 className="text-3xl font-bold mb-6 text-center">Projects</h3>
+    <section id="projects" className="p-10 bg-gray-800 text-white">
+      <h3 className="text-4xl font-bold mb-8 text-center">Projects</h3>
       <div className="space-y-6">
         {projects.map((project, index) => (
-          <div key={index} className="border border-gray-700 rounded-md">
+          <div key={index} className="border border-gray-700 rounded-md overflow-hidden shadow-lg">
             <button
               onClick={() => toggleProject(index)}
-              className="w-full text-center p-4 bg-gray-800 text-white font-bold"
+              className="w-full text-left p-4 bg-gray-700 text-white font-bold flex justify-between items-center hover:bg-gray-600"
             >
               {project.title} <span className="text-gray-400">({project.year})</span>
             </button>
             {openProject === index && (
-              <div className="p-4 bg-gray-700 text-center">
+              <div className="p-4 bg-gray-600">
                 <p>{project.description}</p>
               </div>
             )}
@@ -79,13 +79,13 @@ const Projects = () => {
 
 // Photos section component
 const Photos = () => (
-  <section id="photos" className="p-10 bg-black text-white">
-    <h3 className="text-3xl font-bold mb-6 text-center">Photos</h3>
-    <div className="grid grid-cols-3 gap-4">
+  <section id="photos" className="p-10 bg-gray-900 text-white">
+    <h3 className="text-4xl font-bold mb-8 text-center">Photos</h3>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
       {[...Array(9)].map((_, index) => (
         <div
           key={index}
-          className="w-full h-40 bg-gray-700 flex items-center justify-center text-white"
+          className="w-full h-40 bg-gray-700 flex items-center justify-center text-white rounded-md shadow-lg hover:bg-gray-600"
         >
           Photo {index + 1}
         </div>
@@ -104,7 +104,6 @@ export default function Home() {
       <Hero />
       <Projects />
       <Photos />
-      <Footer />
     </>
   );
 }
