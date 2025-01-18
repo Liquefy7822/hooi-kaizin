@@ -9,7 +9,6 @@ const Navbar = () => (
     <h1 className="text-2xl font-bold">Nextfolio</h1>
     <div className="flex space-x-6">
       <a href="#projects" className="hover:text-gray-400">Projects</a>
-      <a href="#photos" className="hover:text-gray-400">Photos</a>
     </div>
   </nav>
 );
@@ -32,18 +31,21 @@ const Projects = () => {
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laboriosam veritatis dolorem rem praesentium dicta labore, at laudantium quisquam.',
       year: '2023',
+      image: 'https://via.placeholder.com/150',
     },
     {
       title: 'Project Two',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laboriosam veritatis dolorem rem praesentium dicta labore, at laudantium quisquam.',
       year: '2022',
+      image: 'https://via.placeholder.com/150',
     },
     {
       title: 'Project Three',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laboriosam veritatis dolorem rem praesentium dicta labore, at laudantium quisquam.',
       year: '2021',
+      image: 'https://via.placeholder.com/150',
     },
   ];
 
@@ -61,9 +63,13 @@ const Projects = () => {
           <div key={index} className="border border-gray-700 rounded-md overflow-hidden shadow-lg">
             <button
               onClick={() => toggleProject(index)}
-              className="w-full text-left p-4 bg-gray-700 text-white font-bold flex justify-between items-center hover:bg-gray-600"
+              className="w-full text-left p-4 bg-gray-700 text-white font-bold flex justify-between items-center hover:bg-gray-600 transition duration-300 ease-in-out"
             >
-              {project.title} <span className="text-gray-400">({project.year})</span>
+              <div className="flex items-center space-x-4">
+                <img src={project.image} alt={project.title} className="w-12 h-12 rounded-md" />
+                <span>{project.title}</span>
+              </div>
+              <span className="text-gray-400">({project.year})</span>
             </button>
             {openProject === index && (
               <div className="p-4 bg-gray-600">
@@ -77,23 +83,6 @@ const Projects = () => {
   );
 };
 
-// Photos section component
-const Photos = () => (
-  <section id="photos" className="p-10 bg-gray-900 text-white">
-    <h3 className="text-4xl font-bold mb-8 text-center">Photos</h3>
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      {[...Array(9)].map((_, index) => (
-        <div
-          key={index}
-          className="w-full h-40 bg-gray-700 flex items-center justify-center text-white rounded-md shadow-lg hover:bg-gray-600"
-        >
-          Photo {index + 1}
-        </div>
-      ))}
-    </div>
-  </section>
-);
-
 export default function Home() {
   return (
     <>
@@ -103,7 +92,6 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Projects />
-      <Photos />
     </>
   );
 }
